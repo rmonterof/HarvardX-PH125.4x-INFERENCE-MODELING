@@ -1,0 +1,112 @@
+0
+00:00:05,181 --> 00:00:07,040
+RAFAEL IRIZARRY: We can run a Monte Carlo
+
+1
+00:00:07,040 --> 00:00:14,120
+simulation to confirm that, in fact, a 95% confidence interval includes p 95%
+
+2
+00:00:14,120 --> 00:00:15,650
+of the time.
+
+3
+00:00:15,650 --> 00:00:17,709
+We write the simulation like this.
+
+4
+00:00:17,709 --> 00:00:20,000
+We&#39;re going to write the simulation we&#39;ve been writing.
+
+5
+00:00:20,000 --> 00:00:22,850
+But now, we&#39;re going to actually construct the confidence
+
+6
+00:00:22,850 --> 00:00:25,850
+interval inside the call to replicate.
+
+7
+00:00:25,850 --> 00:00:32,310
+And in the very final line, we&#39;re going to ask, is p included in the interval.
+
+8
+00:00:32,310 --> 00:00:34,310
+We&#39;re going to return either true or false.
+
+9
+00:00:34,310 --> 00:00:37,820
+To compute how often it happened, we compute the mean
+
+10
+00:00:37,820 --> 00:00:40,790
+of that vector of true and false.
+
+11
+00:00:40,790 --> 00:00:45,680
+We run a simulation and we get 0.9522.
+
+12
+00:00:45,680 --> 00:00:48,050
+This plot shows you the first few confidence
+
+13
+00:00:48,050 --> 00:00:51,800
+intervals that were generated in our Monte Carlo simulation.
+
+14
+00:00:51,800 --> 00:00:55,670
+In this case, we created simulations so we know what p is.
+
+15
+00:00:55,670 --> 00:01:00,030
+In the plot, it&#39;s represented with a vertical black line.
+
+16
+00:01:00,030 --> 00:01:02,570
+Notice that you can see the confidence intervals varying.
+
+17
+00:01:02,570 --> 00:01:05,489
+Each time, they fall in slightly different places.
+
+18
+00:01:05,489 --> 00:01:08,250
+This is because they&#39;re random variables.
+
+19
+00:01:08,250 --> 00:01:11,210
+We also know that most of the times, p is
+
+20
+00:01:11,210 --> 00:01:15,950
+included inside the confidence interval. p is not moving, of course, because p
+
+21
+00:01:15,950 --> 00:01:17,970
+is not a random variable.
+
+22
+00:01:17,970 --> 00:01:22,100
+We also see that, every once in a while, we actually miss p.
+
+23
+00:01:22,100 --> 00:01:25,340
+These confidence intervals are shown in red.
+
+24
+00:01:25,340 --> 00:01:29,240
+We should only see about 5% of the intervals
+
+25
+00:01:29,240 --> 00:01:33,530
+in red because they&#39;re 95% confidence intervals.
+
+26
+00:01:33,530 --> 00:01:37,100
+This plot should help you understand what confidence intervals are
+
+27
+00:01:37,100 --> 00:01:39,130
+and what they mean.
+

@@ -1,0 +1,64 @@
+Data Science: Probability
+
+0.1 Important Pre-Course Survey
+ Section 1: Discrete Probability
+
+Section 1 OverviewCompleted
+ 1.1 Introduction to Discrete Probability (4 Questions)
+Discrete Probability ***
+Monte Carlo simulations ***
+Using the RANDOM SEED ***
+MEAN function in probability ***
+Probability Distributions ***
+Independence ***
+
+ 1.2 Combinations and Permutations
+Combinations and Permutations ***
+The Birthday Problem ***
+sapply ***
+How many Monte Carlo experiments are enough? ***
+
+ 1.3 Addition Rule and Monty Hall
+The Addition Rule ***
+The Monty Hall problem ***
+
+ 1.4 Assessment: Discrete Probability (26 Questions)
+
+ 2.1 Continuous Probability
+Continuous Probability ***
+Theoretical Distribution ***
+Probability Density ***
+Plotting the probability density ***
+Monte Carlo simulations ***
+Other continuous distributions ***
+
+ 2.2 Assessment: Continuous Probability (13 Questions)
+
+Section 3: Random Variables, Sampling Models, and the Central Limit Theorem
+3.1 Random Variables and Sampling Models ***
+Random Variables ***
+Sampling Models ***
+Distributions versus probability distributions ***
+Notation for random variables ***
+The Central Limit Theorem ***
+
+ 3.2 The Central Limit Theorem Continued
+Averages and proportions ***
+Law of Large Numbers ***
+How Large is Large in CLT? ***
+
+ 3.3 Assessment: Random Variables, Sampling Models, and the Central Limit Theorem (15 Questions)Completed
+
+Section 4: The Big Short
+Section 4 OverviewCompleted
+4.1 The Big Short
+The Big Short: Interest Rates Explained ***
+The Big Short ***
+
+
+ 4.2 Assessment: The Big Short (25 Questions)Completed
+Final 
+End of Course SurveyCompleted
+
+Course End
+To earn a certificate, you must complete all requirements before this date.

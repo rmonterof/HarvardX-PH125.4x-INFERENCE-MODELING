@@ -1,0 +1,292 @@
+0
+00:00:06,039 --> 00:00:08,080
+RAFAEL IRIZARRY: For each pollster, let&#39;s collect
+
+1
+00:00:08,080 --> 00:00:10,560
+their last-reported result before the election
+
+2
+00:00:10,560 --> 00:00:14,500
+using this simple piece of code.
+
+3
+00:00:14,500 --> 00:00:18,890
+Here&#39;s a histogram of the data for these 15 pollsters.
+
+4
+00:00:18,890 --> 00:00:22,170
+In the previous video, we saw that using the urn model
+
+5
+00:00:22,170 --> 00:00:24,600
+theory to combine these results might not be
+
+6
+00:00:24,600 --> 00:00:27,480
+appropriate due to the pollster effect.
+
+7
+00:00:27,480 --> 00:00:31,170
+Instead, we will model this spread data directly.
+
+8
+00:00:31,170 --> 00:00:33,960
+The new model can also be thought of as an urn
+
+9
+00:00:33,960 --> 00:00:38,580
+model, although the connection to the urn idea is not as direct.
+
+10
+00:00:38,580 --> 00:00:42,960
+Rather than having beads with zeros and ones inside the urn,
+
+11
+00:00:42,960 --> 00:00:48,240
+now the urn contains poll results from all possible pollsters.
+
+12
+00:00:48,240 --> 00:00:51,180
+We assume that the expected value of our urn
+
+13
+00:00:51,180 --> 00:00:53,490
+is the actual spread, which we have been calling
+
+14
+00:00:53,490 --> 00:00:56,710
+d, which is equal to 2p minus 1.
+
+15
+00:00:56,710 --> 00:01:00,030
+Now, because rather than zeros and ones our urn
+
+16
+00:01:00,030 --> 00:01:03,630
+contains continuous numbers between minus 1 and 1,
+
+17
+00:01:03,630 --> 00:01:06,690
+the standard deviation of the urn is no longer
+
+18
+00:01:06,690 --> 00:01:09,900
+the square root of p times 1 minus p.
+
+19
+00:01:09,900 --> 00:01:12,220
+Rather than just the sampling variability
+
+20
+00:01:12,220 --> 00:01:15,510
+we get from taking different samples of zeros and ones,
+
+21
+00:01:15,510 --> 00:01:18,970
+the standard error for our average now includes
+
+22
+00:01:18,970 --> 00:01:22,530
+the pollster-to-pollster variability.
+
+23
+00:01:22,530 --> 00:01:26,760
+Our new urn also includes the sample variability from the polling.
+
+24
+00:01:26,760 --> 00:01:31,640
+Regardless, this standard deviation is now an unknown parameter.
+
+25
+00:01:31,640 --> 00:01:35,010
+In statistics textbooks, the Greek symbol sigma
+
+26
+00:01:35,010 --> 00:01:37,850
+is used to represent this parameter.
+
+27
+00:01:37,850 --> 00:01:40,890
+Now in summary, we have two unknown parameters now,
+
+28
+00:01:40,890 --> 00:01:43,770
+the expected value d, what we want to estimate,
+
+29
+00:01:43,770 --> 00:01:45,990
+and the standard deviation, sigma.
+
+30
+00:01:45,990 --> 00:01:49,650
+Our task is to estimate d and provide inference for it.
+
+31
+00:01:49,650 --> 00:01:53,700
+Because we model the observed values, let&#39;s call them X1 through XN,
+
+32
+00:01:53,700 --> 00:01:57,330
+as a random sample from the urn, the central limit theorem
+
+33
+00:01:57,330 --> 00:02:00,480
+still works for the average of these values
+
+34
+00:02:00,480 --> 00:02:04,410
+because it&#39;s an average of independent random variables.
+
+35
+00:02:04,410 --> 00:02:07,950
+For a large enough sample size N, the probability distribution
+
+36
+00:02:07,950 --> 00:02:10,830
+of the sample average, which we&#39;ll call X-bar,
+
+37
+00:02:10,830 --> 00:02:15,480
+is approximately normal with expected value d and standard deviation
+
+38
+00:02:15,480 --> 00:02:20,040
+sigma divided by the square root of N. If we are willing to consider
+
+39
+00:02:20,040 --> 00:02:24,360
+N equals to 15 large enough, we can use this to construct a confidence
+
+40
+00:02:24,360 --> 00:02:26,710
+interval.
+
+41
+00:02:26,710 --> 00:02:29,160
+A problem, though, is that we don&#39;t know sigma.
+
+42
+00:02:29,160 --> 00:02:32,730
+But the theory tells us that we can estimate the urn model
+
+43
+00:02:32,730 --> 00:02:36,300
+sigma, the unobserved sigma, with the sample standard
+
+44
+00:02:36,300 --> 00:02:40,310
+deviation, which is defined like this with this mathematical formula.
+
+45
+00:02:40,310 --> 00:02:43,490
+Now note in the mathematical formula that unlike the population standard
+
+46
+00:02:43,490 --> 00:02:46,590
+deviation, we now divide by N minus 1.
+
+47
+00:02:46,590 --> 00:02:50,640
+This makes s a better estimate of sigma than if we just divided by N.
+
+48
+00:02:50,640 --> 00:02:53,560
+And there&#39;s a mathematical explanation for this,
+
+49
+00:02:53,560 --> 00:02:57,790
+which is explained in most statistics textbooks, but we don&#39;t cover it here.
+
+50
+00:02:57,790 --> 00:03:01,810
+Now the sd function in R computes the sample standard deviation.
+
+51
+00:03:01,810 --> 00:03:05,190
+So we can compute it for our data here with this simple line.
+
+52
+00:03:05,190 --> 00:03:09,030
+And we get that it&#39;s 0.024.
+
+53
+00:03:09,030 --> 00:03:11,670
+We are now ready to form a confidence interval
+
+54
+00:03:11,670 --> 00:03:14,400
+based on our new data-driven model.
+
+55
+00:03:14,400 --> 00:03:18,870
+We simply use the central limit theorem and create a confidence interval
+
+56
+00:03:18,870 --> 00:03:20,710
+using this simple code.
+
+57
+00:03:20,710 --> 00:03:24,660
+We get an average, a standard error, and then a start of 1.7%
+
+58
+00:03:24,660 --> 00:03:26,400
+and an end of 4.1%.
+
+59
+00:03:26,400 --> 00:03:31,630
+That&#39;s our 95% confidence interval using now our data-driven model.
+
+60
+00:03:31,630 --> 00:03:34,380
+Note that our new confidence interval is wider,
+
+61
+00:03:34,380 --> 00:03:38,100
+and it now incorporates the pollster variability.
+
+62
+00:03:38,100 --> 00:03:41,670
+It does include the election-night result of 2.1%,
+
+63
+00:03:41,670 --> 00:03:44,530
+and also it&#39;s small enough not to include 0.
+
+64
+00:03:44,530 --> 00:03:47,440
+Which means that in this particular case,
+
+65
+00:03:47,440 --> 00:03:51,780
+we would have been quite confident that Clinton would win the popular vote.
+
+66
+00:03:51,780 --> 00:03:54,810
+Now, are we now ready to declare a probability of Clinton
+
+67
+00:03:54,810 --> 00:03:57,000
+winning as the pollsters do?
+
+68
+00:03:57,000 --> 00:03:58,070
+Not yet.
+
+69
+00:03:58,070 --> 00:04:03,060
+In our model, d is a fixed parameter, so we can&#39;t talk about probabilities.
+
+70
+00:04:03,060 --> 00:04:06,220
+To provide probabilities, we&#39;ll need to learn something new.
+
+71
+00:04:06,220 --> 00:04:08,770
+We&#39;re going to have to learn about Bayesian statistics.
+
+72
+00:04:08,770 --> 00:04:10,820
+And we do that next.
+

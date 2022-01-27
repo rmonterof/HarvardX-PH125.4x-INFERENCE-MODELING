@@ -1,0 +1,316 @@
+0
+00:00:06,030 --> 00:00:08,490
+RAFAEL IRIZARRY: In this video we use public polling data
+
+1
+00:00:08,490 --> 00:00:13,870
+organized by FiveThirtyEight for the 2016 presidential election.
+
+2
+00:00:13,870 --> 00:00:17,590
+The data is included as part of the dslabs package.
+
+3
+00:00:17,590 --> 00:00:20,040
+You can get the data by typing this code.
+
+4
+00:00:20,040 --> 00:00:24,000
+Here, we show you the column names of the table.
+
+5
+00:00:24,000 --> 00:00:26,880
+The table includes results for national polls,
+
+6
+00:00:26,880 --> 00:00:31,260
+as well as state polls, taken in the year before the election.
+
+7
+00:00:31,260 --> 00:00:33,840
+For this first illustrative example, we will
+
+8
+00:00:33,840 --> 00:00:37,650
+filter the data to include national polls that happened during the week
+
+9
+00:00:37,650 --> 00:00:39,270
+before the election.
+
+10
+00:00:39,270 --> 00:00:41,730
+We also remove polls that FiveThirtyEight
+
+11
+00:00:41,730 --> 00:00:47,250
+has determined not to be reliable, and they have graded them with a B or less.
+
+12
+00:00:47,250 --> 00:00:49,260
+Some polls have not been graded.
+
+13
+00:00:49,260 --> 00:00:51,540
+And we&#39;re going to leave these in.
+
+14
+00:00:51,540 --> 00:00:56,520
+Here&#39;s the code we used to filter as we just described.
+
+15
+00:00:56,520 --> 00:00:58,560
+We also add a spread estimate.
+
+16
+00:00:58,560 --> 00:01:01,950
+Remember, the spread is what we&#39;re really interested in estimating.
+
+17
+00:01:01,950 --> 00:01:07,440
+So, we type this code to get the spread in proportions.
+
+18
+00:01:07,440 --> 00:01:11,220
+For illustrative purpose, we will assume that there are only two parties,
+
+19
+00:01:11,220 --> 00:01:14,100
+and call p the proportion voting for Clinton,
+
+20
+00:01:14,100 --> 00:01:17,560
+and 1 minus p the proportion voting for Trump.
+
+21
+00:01:17,560 --> 00:01:22,240
+We&#39;re interested in the spread, which we&#39;ve shown is 2p minus 1.
+
+22
+00:01:22,240 --> 00:01:25,320
+Let&#39;s call this spread d. d is for difference.
+
+23
+00:01:25,320 --> 00:01:27,990
+Note that we have several estimates of this spread coming
+
+24
+00:01:27,990 --> 00:01:30,600
+from the different polls.
+
+25
+00:01:30,600 --> 00:01:33,360
+The theory we learned tells us that these estimates
+
+26
+00:01:33,360 --> 00:01:36,300
+are a random variable with probability distribution
+
+27
+00:01:36,300 --> 00:01:38,340
+that is approximately normal.
+
+28
+00:01:38,340 --> 00:01:41,760
+The expected value is the election night spread, d.
+
+29
+00:01:41,760 --> 00:01:44,880
+And the standard error is 2 times the square root of p times
+
+30
+00:01:44,880 --> 00:01:50,340
+1 minus p divided by the sample size N. Assuming the urn model we described
+
+31
+00:01:50,340 --> 00:01:53,670
+earlier are useful models, we can use this information
+
+32
+00:01:53,670 --> 00:01:59,190
+to construct a confidence interval based on the aggregated data.
+
+33
+00:01:59,190 --> 00:02:04,170
+The estimated spread is now computed like this because now the sample size
+
+34
+00:02:04,170 --> 00:02:08,530
+is the sum of all the sample sizes.
+
+35
+00:02:08,530 --> 00:02:11,070
+And if we use this, we get a standard error,
+
+36
+00:02:11,070 --> 00:02:17,820
+typing this code, that then leads us to a margin of error of .0066,
+
+37
+00:02:17,820 --> 00:02:20,440
+a very small margin of error.
+
+38
+00:02:20,440 --> 00:02:25,650
+So, if we were going to use this data, we would report a spread of 1.43%
+
+39
+00:02:25,650 --> 00:02:29,640
+with a margin of error of 0.66%.
+
+40
+00:02:29,640 --> 00:02:32,310
+On election night, we find out that the actual percentage
+
+41
+00:02:32,310 --> 00:02:37,260
+is 2.1%, which is outside of the 95% confidence interval.
+
+42
+00:02:37,260 --> 00:02:38,010
+So, what happened?
+
+43
+00:02:38,010 --> 00:02:40,500
+Was this just bad luck?
+
+44
+00:02:40,500 --> 00:02:43,980
+A histogram of the reported spreads shows another problem.
+
+45
+00:02:43,980 --> 00:02:47,030
+With this code, we can quickly make a histogram of the spreads
+
+46
+00:02:47,030 --> 00:02:48,390
+that we&#39;re looking at.
+
+47
+00:02:48,390 --> 00:02:50,730
+The data does not appear to be normally distributed,
+
+48
+00:02:50,730 --> 00:02:55,770
+and the standard error appears to be larger than 0.0066.
+
+49
+00:02:55,770 --> 00:02:57,870
+The theory is not quite working here.
+
+50
+00:03:00,510 --> 00:03:04,410
+To see why, notice that various pollsters are involved
+
+51
+00:03:04,410 --> 00:03:06,630
+and some are taking several polls a week.
+
+52
+00:03:06,630 --> 00:03:09,540
+Here&#39;s a table showing you how many polls each pollster
+
+53
+00:03:09,540 --> 00:03:12,630
+took that last week.
+
+54
+00:03:12,630 --> 00:03:16,830
+Let&#39;s visualize the data for the pollsters that are regularly polling.
+
+55
+00:03:16,830 --> 00:03:20,220
+We write this piece of code that first filters for only pollsters that
+
+56
+00:03:20,220 --> 00:03:22,350
+polled more than 6 times.
+
+57
+00:03:22,350 --> 00:03:26,310
+And then we simply plot the spreads estimated by each pollster.
+
+58
+00:03:26,310 --> 00:03:28,680
+Each one has between five and six.
+
+59
+00:03:28,680 --> 00:03:32,250
+This plot reveals an unexpected result. First
+
+60
+00:03:32,250 --> 00:03:36,300
+note that the standard error, predicted by theory for each poll--
+
+61
+00:03:36,300 --> 00:03:38,340
+now, we&#39;re going to do this poll by poll--
+
+62
+00:03:38,340 --> 00:03:45,450
+gives us values between 0.018 and 0.033.
+
+63
+00:03:45,450 --> 00:03:47,130
+This appears to be right.
+
+64
+00:03:47,130 --> 00:03:50,910
+This appears to be consistent with what we see in the plot.
+
+65
+00:03:50,910 --> 00:03:55,350
+However, there appears to be differences across the polls.
+
+66
+00:03:55,350 --> 00:03:58,040
+This is not explained by the theory.
+
+67
+00:03:58,040 --> 00:04:01,290
+Note for example, how the USC Dornsife/LA Times
+
+68
+00:04:01,290 --> 00:04:04,320
+pollster is predicting a 4% win for Trump
+
+69
+00:04:04,320 --> 00:04:08,640
+while Ipsos is predicting a win larger than 5% for Clinton.
+
+70
+00:04:08,640 --> 00:04:12,210
+The theory of learned says nothing about different pollsters producing polls
+
+71
+00:04:12,210 --> 00:04:14,360
+with different expected values.
+
+72
+00:04:14,360 --> 00:04:17,440
+All the polls should have the same expected value,
+
+73
+00:04:17,440 --> 00:04:21,540
+the actual spread, the spread we will see on election night.
+
+74
+00:04:21,540 --> 00:04:25,440
+FiveThirtyEight refers to these differences as &quot;house effects.&quot;
+
+75
+00:04:25,440 --> 00:04:28,440
+We can also call them pollster bias.
+
+76
+00:04:28,440 --> 00:04:31,260
+Rather than use urn model theory, we&#39;re instead
+
+77
+00:04:31,260 --> 00:04:35,550
+going to develop a data-driven model to produce a better estimate and a better
+
+78
+00:04:35,550 --> 00:04:37,610
+confidence interval.
+

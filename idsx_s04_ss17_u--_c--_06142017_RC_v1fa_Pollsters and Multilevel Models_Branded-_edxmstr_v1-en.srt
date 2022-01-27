@@ -1,0 +1,136 @@
+0
+00:00:05,193 --> 00:00:08,109
+RAFAEL IRIZARRY: Now we&#39;re going to get ready to explain how pollsters
+
+1
+00:00:08,109 --> 00:00:11,980
+fit multilevel models to public poll data
+
+2
+00:00:11,980 --> 00:00:15,880
+and use this to forecast election results.
+
+3
+00:00:15,880 --> 00:00:20,230
+In the 2008 and 2012 US presidential elections,
+
+4
+00:00:20,230 --> 00:00:24,910
+Nate Silver used this approach to make an almost perfect prediction
+
+5
+00:00:24,910 --> 00:00:27,370
+and silenced the pundits.
+
+6
+00:00:27,370 --> 00:00:30,280
+Since the 2008 election, other organizations
+
+7
+00:00:30,280 --> 00:00:32,350
+have started their own election forecasting
+
+8
+00:00:32,350 --> 00:00:35,920
+groups that, like Nate Silver, aggregate polling data
+
+9
+00:00:35,920 --> 00:00:39,490
+and use statistical models to make predictions.
+
+10
+00:00:39,490 --> 00:00:45,610
+In 2016, forecasters greatly underestimated Trump&#39;s chances
+
+11
+00:00:45,610 --> 00:00:48,230
+of winning the election.
+
+12
+00:00:48,230 --> 00:00:53,260
+For example, the Princeton Election Consortium gave Trump less than 1%
+
+13
+00:00:53,260 --> 00:00:57,130
+chance of winning the election, while the Huffington Post gave him
+
+14
+00:00:57,130 --> 00:00:58,810
+a 2% chance.
+
+15
+00:00:58,810 --> 00:01:04,540
+In contrast, FiveThirtyEight had Trump&#39;s chances of winning at 29%.
+
+16
+00:01:04,540 --> 00:01:08,770
+Although they didn&#39;t correctly predict him to have a higher probability,
+
+17
+00:01:08,770 --> 00:01:13,900
+note that 29% is a higher probability than the probability of tossing
+
+18
+00:01:13,900 --> 00:01:16,000
+two coins and getting two heads.
+
+19
+00:01:16,000 --> 00:01:21,590
+It&#39;s also much, much bigger than what the other pollsters had predicted.
+
+20
+00:01:21,590 --> 00:01:25,600
+By understanding statistical models and how these forecasters use them,
+
+21
+00:01:25,600 --> 00:01:29,980
+we will start to understand how this happened.
+
+22
+00:01:29,980 --> 00:01:33,280
+Although not nearly as interesting as predicting the electoral college,
+
+23
+00:01:33,280 --> 00:01:36,910
+the actual outcome of the election, for illustrative purposes
+
+24
+00:01:36,910 --> 00:01:40,740
+we will start by looking at the predictions for the popular vote.
+
+25
+00:01:40,740 --> 00:01:45,880
+FiveThirtyEight predicted a 3.6% advantage for Clinton.
+
+26
+00:01:45,880 --> 00:01:48,460
+Their interval, their prediction interval,
+
+27
+00:01:48,460 --> 00:01:54,460
+included the actual result of 2.1%, 48.2% for Clinton
+
+28
+00:01:54,460 --> 00:01:57,820
+compared to 46.1% for Trump.
+
+29
+00:01:57,820 --> 00:02:01,720
+They were much more confident about Clinton winning this, the popular vote,
+
+30
+00:02:01,720 --> 00:02:06,280
+giving her a 81.4% chance of winning.
+
+31
+00:02:06,280 --> 00:02:11,470
+Next, we&#39;re going to look at actual public polling data from the 2016 US
+
+32
+00:02:11,470 --> 00:02:16,030
+presidential election to show how models are motivated and built
+
+33
+00:02:16,030 --> 00:02:19,050
+to produce these predictions.
+

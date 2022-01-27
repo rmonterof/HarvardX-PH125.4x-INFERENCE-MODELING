@@ -1,0 +1,44 @@
+0
+00:00:05,735 --> 00:00:08,109
+RAFAEL IRIZARRY: When using the theory we just described,
+
+1
+00:00:08,109 --> 00:00:11,260
+it is important to remember that it is the intervals that
+
+2
+00:00:11,260 --> 00:00:13,870
+are at random, not p.
+
+3
+00:00:13,870 --> 00:00:17,200
+We showed a plot where we could see the random intervals that
+
+4
+00:00:17,200 --> 00:00:18,680
+were moving around.
+
+5
+00:00:18,680 --> 00:00:21,610
+And we also saw p. p was not moving around.
+
+6
+00:00:21,610 --> 00:00:24,730
+It was fixed, and it was represented with a vertical line.
+
+7
+00:00:24,730 --> 00:00:27,170
+It was staying in the same place.
+
+8
+00:00:27,170 --> 00:00:33,730
+So the 95% relates to the probability that the random interval falls on top of p.
+
+9
+00:00:33,730 --> 00:00:39,010
+Saying that p has a 95% chance of being between this and that
+
+10
+00:00:39,010 --> 00:00:45,300
+is technically an incorrect statement-- again, because p is not random.
+

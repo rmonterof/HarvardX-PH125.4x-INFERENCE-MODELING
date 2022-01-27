@@ -1,0 +1,216 @@
+0
+00:00:05,760 --> 00:00:07,800
+RAFAEL IRIZARRY: p-values are very common in,
+
+1
+00:00:07,800 --> 00:00:10,510
+for example, the scientific literature.
+
+2
+00:00:10,510 --> 00:00:12,550
+They are related to confidence intervals,
+
+3
+00:00:12,550 --> 00:00:15,030
+so we introduce the concept here.
+
+4
+00:00:15,030 --> 00:00:18,810
+Let&#39;s consider the blue and red bead example again.
+
+5
+00:00:18,810 --> 00:00:20,970
+Suppose that rather than wanting to estimate
+
+6
+00:00:20,970 --> 00:00:25,080
+the spread or the proportion of blue, I&#39;m interested only in the question,
+
+7
+00:00:25,080 --> 00:00:27,780
+are there more blue beads than red beads?
+
+8
+00:00:27,780 --> 00:00:31,800
+Another way to ask that is, is 2p minus 1 bigger than 0?
+
+9
+00:00:31,800 --> 00:00:34,990
+Is the spread bigger than 0?
+
+10
+00:00:34,990 --> 00:00:39,480
+So suppose we take a random sample of, say, 100 beads,
+
+11
+00:00:39,480 --> 00:00:42,360
+and we observe 52 blue beads.
+
+12
+00:00:42,360 --> 00:00:46,290
+This gives us a spread of 4%.
+
+13
+00:00:46,290 --> 00:00:50,430
+This seems to be pointing to there being more blue beads than red beads,
+
+14
+00:00:50,430 --> 00:00:53,220
+because 4% is larger than 0.
+
+15
+00:00:53,220 --> 00:00:56,130
+52% is larger than 48%.
+
+16
+00:00:56,130 --> 00:00:59,760
+However, as data scientists, we need to be skeptical.
+
+17
+00:00:59,760 --> 00:01:02,930
+We know there is chance involved in this process,
+
+18
+00:01:02,930 --> 00:01:06,875
+and we can get a 52 even when the actual spread is 0.
+
+19
+00:01:06,875 --> 00:01:11,250
+The null hypothesis is the skeptic&#39;s hypothesis.
+
+20
+00:01:11,250 --> 00:01:15,480
+In this case, it would be the spread is 0.
+
+21
+00:01:15,480 --> 00:01:21,300
+We have observed a random variable 2 times X-bar minus 1, which in this case
+
+22
+00:01:21,300 --> 00:01:27,240
+is 4%, and the p-value is the answer to the question, how
+
+23
+00:01:27,240 --> 00:01:33,790
+likely is it to see a value this large when the null hypothesis is true?
+
+24
+00:01:33,790 --> 00:01:41,010
+So we write, what&#39;s the probability of X-bar minus 0.5 being bigger than 2%?
+
+25
+00:01:41,010 --> 00:01:46,038
+That&#39;s the same as asking, what&#39;s the chance that the spread is 4 or more?
+
+26
+00:01:46,038 --> 00:01:51,530
+The null hypothesis is that the spread is 0 or that p is a half.
+
+27
+00:01:51,530 --> 00:01:56,550
+Under the null hypothesis, we know that this quantity here, the square root
+
+28
+00:01:56,550 --> 00:02:02,130
+of n times X-bar minus 0.5 divided by the square root of 0.5 times 1
+
+29
+00:02:02,130 --> 00:02:04,920
+minus 0.5, is a standard normal.
+
+30
+00:02:04,920 --> 00:02:08,910
+We&#39;ve taken a random variable and divided it by its standard error
+
+31
+00:02:08,910 --> 00:02:12,520
+after subtracting its expected value.
+
+32
+00:02:12,520 --> 00:02:16,320
+So we can compute the probability, which is a p-value,
+
+33
+00:02:16,320 --> 00:02:20,920
+using this equation, which reduces to this equation, where
+
+34
+00:02:20,920 --> 00:02:23,590
+z is a standard normal.
+
+35
+00:02:23,590 --> 00:02:26,710
+And now we can use code to compute this.
+
+36
+00:02:26,710 --> 00:02:31,530
+We compute the probability, which is equal to 69% in this case.
+
+37
+00:02:31,530 --> 00:02:33,360
+This is the p-value.
+
+38
+00:02:33,360 --> 00:02:39,870
+In this case, there&#39;s actually a large chance of seeing 52 blue beads or more
+
+39
+00:02:39,870 --> 00:02:42,900
+under the null hypothesis that there is the same amount
+
+40
+00:02:42,900 --> 00:02:45,210
+of blue beads as red beads.
+
+41
+00:02:45,210 --> 00:02:49,740
+So the 52 blue beads are not very strong evidence,
+
+42
+00:02:49,740 --> 00:02:53,520
+are not very convincing, if we want to make the case that there&#39;s
+
+43
+00:02:53,520 --> 00:02:56,540
+more blue beads than red beads.
+
+44
+00:02:56,540 --> 00:02:59,880
+Note that there&#39;s a close connection between p-values and confidence
+
+45
+00:02:59,880 --> 00:03:00,630
+intervals.
+
+46
+00:03:00,630 --> 00:03:06,390
+If a 95% confidence interval of the spread does not include 0,
+
+47
+00:03:06,390 --> 00:03:11,910
+we can do a little bit of math to see that this implies that the p-value must
+
+48
+00:03:11,910 --> 00:03:19,230
+be smaller than 1 minus 95%, or 0.05.
+
+49
+00:03:19,230 --> 00:03:23,530
+To learn more about p-values, you can consult any statistics textbook.
+
+50
+00:03:23,530 --> 00:03:27,480
+However, in general, we prefer reporting confidence intervals
+
+51
+00:03:27,480 --> 00:03:32,470
+over p-values, since it gives us an idea of the size of the estimate.
+
+52
+00:03:32,470 --> 00:03:36,810
+The p-value simply reports a probability and says nothing
+
+53
+00:03:36,810 --> 00:03:41,570
+about the significance of the finding in the context of the problem.
+

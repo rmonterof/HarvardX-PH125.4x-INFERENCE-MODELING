@@ -1,0 +1,66 @@
+INFERENCE AND MODELING
+
+Introduction and Welcome
+0.1 Important Pre-Course Survey
+Section 1: Parameters and Estimates
+
+Parameters and Estimates
+Sampling Models: Parameters and Estimates ***
+The Sample Average ***
+Polling versus Forecasting ***
+Properties of Our Estimate ***
+
+
+Section 2: The Central Limit Theorem in Practice
+Section 2 Overview
+Central Limit Theorem in Practice  ***
+Margin of Error ***
+A Monte Carlo Simulation for the CLT ***
+The Spread ***
+Bias: Why Not Run a Very Large Poll? ***
+
+
+Section 3: Confidence Intervals and p-Values
+Section 3 Overview
+Confidence Intervals and p-Values ***
+Confidence intervals ***
+A Monte Carlo Simulation For Confidence Intervals  ***
+The Correct Language  ***
+Power  ***
+p-Values  ***
+Another Explanation Of p-Values  *** 
+
+Section 4: Statistical Models
+Section 4 Overview Statistical Models
+Poll Aggregators  ***
+Pollsters and Multilevel Models  ***
+Poll Data and Pollster Bias  ***
+Data-Driven Models  ***
+
+
+
+Section 5: Bayesian Statistics
+Section 5 Overview
+Bayesian Statistics
+
+ Section 6: Election Forecasting
+Section 6 Overview
+ Election Forecasting
+
+Section 7: Association Tests
+Section 7 Overview
+Association Tests
+
+Course Wrap-up and Comprehensive Assessment: Brexit
+Comprehensive Assessment: Brexit
+
+Upcoming Dates
+May 28, 2020
+
+Upgrade to Verified Certificate
+Don't miss the opportunity to highlight your new knowledge and skills by earning a verified certificate.
+Upgrade to Verified Certificate
+Jun 30, 2020
+
+Course End
+After this date, course content will be archived.

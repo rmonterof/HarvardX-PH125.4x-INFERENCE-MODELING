@@ -1,0 +1,360 @@
+0
+00:00:06,340 --> 00:00:08,800
+RAFAEL IRIZARRY: In the 2012 presidential election,
+
+1
+00:00:08,800 --> 00:00:13,210
+Barack Obama won the electoral college and he won the popular vote
+
+2
+00:00:13,210 --> 00:00:16,000
+by a margin of 3.9%.
+
+3
+00:00:16,000 --> 00:00:20,350
+Let&#39;s go back to the week before the election before we knew this outcome.
+
+4
+00:00:20,350 --> 00:00:24,160
+Nate Silver was giving Obama a 90% chance of winning.
+
+5
+00:00:24,160 --> 00:00:29,350
+Yet, none of the individual polls were nearly that sure.
+
+6
+00:00:29,350 --> 00:00:34,720
+In fact, political commentator Joe Scarborough said during his show,
+
+7
+00:00:34,720 --> 00:00:38,140
+&quot;Anybody that thinks that this race is anything but a tossup right now
+
+8
+00:00:38,140 --> 00:00:41,080
+is such an ideologue-- they&#39;re jokes.&quot;
+
+9
+00:00:41,080 --> 00:00:45,370
+To which Nate Silver responded, &quot;If you think it&#39;s a tossup, let&#39;s bet.
+
+10
+00:00:45,370 --> 00:00:49,570
+If Obama wins, you donate $1,000 to the American Red Cross.
+
+11
+00:00:49,570 --> 00:00:51,280
+If Romney wins, I do.
+
+12
+00:00:51,280 --> 00:00:52,630
+Deal?&quot;
+
+13
+00:00:52,630 --> 00:00:55,270
+How is Mr. Silver so confident?
+
+14
+00:00:55,270 --> 00:00:59,680
+We&#39;ll illustrate what Nate Silver saw that Joe Scarborough and other pundits
+
+15
+00:00:59,680 --> 00:01:00,510
+did not.
+
+16
+00:01:00,510 --> 00:01:03,370
+We&#39;re going to use a Monte Carlo simulation.
+
+17
+00:01:03,370 --> 00:01:06,460
+We&#39;re going to generate results for 12 polls taken
+
+18
+00:01:06,460 --> 00:01:08,710
+the week before the election.
+
+19
+00:01:08,710 --> 00:01:12,190
+We&#39;re going to mimic the sample sizes from actual polls.
+
+20
+00:01:12,190 --> 00:01:15,070
+We&#39;re going to construct and report 95% confidence
+
+21
+00:01:15,070 --> 00:01:18,010
+intervals for each of these 12 polls.
+
+22
+00:01:18,010 --> 00:01:19,930
+Here&#39;s the code we&#39;re going to use.
+
+23
+00:01:19,930 --> 00:01:24,820
+We&#39;re going to generate the data using the actual outcome, 3.9%.
+
+24
+00:01:24,820 --> 00:01:29,890
+So d, the difference, the spread, is 0.039.
+
+25
+00:01:29,890 --> 00:01:33,430
+The sample sizes were selected to mimic regular polls.
+
+26
+00:01:33,430 --> 00:01:38,470
+So we see that the first one is 1,298, the second one is 533, et cetera.
+
+27
+00:01:38,470 --> 00:01:41,920
+We&#39;re also going to define p, the proportion of Democrats--
+
+28
+00:01:41,920 --> 00:01:44,770
+or actually, the proportion of people voting for Obama,
+
+29
+00:01:44,770 --> 00:01:47,000
+as the spread plus 1 divided by 2.
+
+30
+00:01:47,000 --> 00:01:49,080
+That&#39;s the formula we&#39;ve seen before.
+
+31
+00:01:49,080 --> 00:01:51,220
+Then we&#39;re going to use the sapply function
+
+32
+00:01:51,220 --> 00:01:53,110
+to construct the confidence intervals.
+
+33
+00:01:53,110 --> 00:01:57,660
+For each sample size for each poll, we&#39;re going to generate a sample.
+
+34
+00:01:57,660 --> 00:02:01,300
+We&#39;re going to take a sample of size N. Then we&#39;re going to compute
+
+35
+00:02:01,300 --> 00:02:06,370
+the proportion of people voting for Obama in that sample-- that&#39;s X_hat--
+
+36
+00:02:06,370 --> 00:02:11,740
+construct a standard error, and then return the estimate X_hat as well as
+
+37
+00:02:11,740 --> 00:02:15,769
+the beginning and end of the confidence interval.
+
+38
+00:02:15,769 --> 00:02:17,560
+We&#39;re going to do this and then we&#39;re going
+
+39
+00:02:17,560 --> 00:02:21,280
+to generate a data frame that has all the results.
+
+40
+00:02:21,280 --> 00:02:24,970
+Here are the results of the 12 polls that we generated with the Monte Carlo
+
+41
+00:02:24,970 --> 00:02:27,250
+simulation.
+
+42
+00:02:27,250 --> 00:02:30,610
+Here&#39;s a visualization of what the intervals of these pollsters
+
+43
+00:02:30,610 --> 00:02:34,450
+would have reported for the difference between Obama and Romney.
+
+44
+00:02:34,450 --> 00:02:38,320
+Not surprisingly, all 12 polls report confidence intervals
+
+45
+00:02:38,320 --> 00:02:43,070
+that include the election night result, which is shown with the dashed line.
+
+46
+00:02:43,070 --> 00:02:47,720
+This is the case because these are 95% confidence intervals.
+
+47
+00:02:47,720 --> 00:02:51,850
+However, all 12 poll intervals include 0,
+
+48
+00:02:51,850 --> 00:02:54,710
+which is shown with a solid black line.
+
+49
+00:02:54,710 --> 00:02:59,680
+Therefore, individually if we asked for a prediction from the pollsters,
+
+50
+00:02:59,680 --> 00:03:03,670
+from each individual pollster, they would have to agree with Scarborough.
+
+51
+00:03:03,670 --> 00:03:04,900
+It&#39;s a tossup.
+
+52
+00:03:04,900 --> 00:03:08,710
+Now we&#39;re going to describe how pundits are missing a key insight.
+
+53
+00:03:08,710 --> 00:03:11,980
+Poll aggregators, such as Nate Silver, realize
+
+54
+00:03:11,980 --> 00:03:14,770
+that by combining the results of different polls,
+
+55
+00:03:14,770 --> 00:03:17,170
+you could greatly improve precision.
+
+56
+00:03:17,170 --> 00:03:20,410
+By doing this, effectively we&#39;re conducting a poll
+
+57
+00:03:20,410 --> 00:03:22,510
+with a huge sample size.
+
+58
+00:03:22,510 --> 00:03:26,590
+As a result, we can report a smaller 95% confidence interval,
+
+59
+00:03:26,590 --> 00:03:29,920
+and therefore a more precise prediction.
+
+60
+00:03:29,920 --> 00:03:34,120
+Although as aggregators we do not have access to the raw poll data,
+
+61
+00:03:34,120 --> 00:03:36,910
+we can use mathematics to reconstruct what
+
+62
+00:03:36,910 --> 00:03:41,450
+we would have obtained had we made one large poll with, in this case,
+
+63
+00:03:41,450 --> 00:03:45,970
+11,269 people, participants.
+
+64
+00:03:45,970 --> 00:03:49,480
+Basically we construct an estimate of the spread-- let&#39;s call it d--
+
+65
+00:03:49,480 --> 00:03:52,170
+with a weighted average in the following way.
+
+66
+00:03:52,170 --> 00:03:57,650
+We basically multiply each individual spread by the sample size.
+
+67
+00:03:57,650 --> 00:03:59,590
+That&#39;s going to give us a total spread.
+
+68
+00:03:59,590 --> 00:04:02,110
+And then we&#39;re going to divide by the total number
+
+69
+00:04:02,110 --> 00:04:05,170
+of participants in our aggregated poll.
+
+70
+00:04:05,170 --> 00:04:10,750
+This gives us d_hat, which is an estimate of d.
+
+71
+00:04:10,750 --> 00:04:13,450
+Once we have an estimate of d, we can construct
+
+72
+00:04:13,450 --> 00:04:17,140
+an estimate for the proportion voting for Obama, which we can then
+
+73
+00:04:17,140 --> 00:04:19,579
+use to estimate the standard error.
+
+74
+00:04:19,579 --> 00:04:23,980
+Once we do this, we see that our margin of error of the aggregated poll
+
+75
+00:04:23,980 --> 00:04:26,360
+is 0.018.
+
+76
+00:04:26,360 --> 00:04:29,620
+Thus, using the weighted average, we can predict
+
+77
+00:04:29,620 --> 00:04:35,170
+that the spread will be 3.1% plus or minus 1.8%,
+
+78
+00:04:35,170 --> 00:04:37,380
+which not only includes the actual result
+
+79
+00:04:37,380 --> 00:04:40,310
+but is quite far from including 0.
+
+80
+00:04:40,310 --> 00:04:44,170
+Once we combine the 12 polls, we become quite certain that Obama
+
+81
+00:04:44,170 --> 00:04:45,530
+will win the popular vote.
+
+82
+00:04:45,530 --> 00:04:49,840
+In this figure, you can see, in red, the interval that
+
+83
+00:04:49,840 --> 00:04:53,770
+was created using the combined polls.
+
+84
+00:04:53,770 --> 00:04:57,610
+Nate Silver and other aggregators use the same approach
+
+85
+00:04:57,610 --> 00:05:00,220
+to predict the electoral college.
+
+86
+00:05:00,220 --> 00:05:04,570
+And they did very well in 2008 and 2012.
+
+87
+00:05:04,570 --> 00:05:09,200
+However, note that this was just a simulation to illustrate the idea.
+
+88
+00:05:09,200 --> 00:05:12,770
+The actual data science exercise of forecasting elections
+
+89
+00:05:12,770 --> 00:05:17,800
+is much more complicated and it involves statistical modeling.
+

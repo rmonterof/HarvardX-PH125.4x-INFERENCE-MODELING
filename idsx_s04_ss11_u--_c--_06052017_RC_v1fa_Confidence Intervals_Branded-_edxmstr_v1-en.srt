@@ -1,0 +1,328 @@
+0
+00:00:05,770 --> 00:00:08,710
+RAFAEL IRIZARRY: We are ready to learn about confidence intervals.
+
+1
+00:00:08,710 --> 00:00:11,410
+Confidence intervals are a very useful concept that
+
+2
+00:00:11,410 --> 00:00:14,290
+are widely used by data scientists.
+
+3
+00:00:14,290 --> 00:00:17,830
+A version of these that are very commonly seen come from the ggplot
+
+4
+00:00:17,830 --> 00:00:20,590
+geometry geom_smooth().
+
+5
+00:00:20,590 --> 00:00:24,130
+Here&#39;s an example using some weather data.
+
+6
+00:00:24,130 --> 00:00:28,510
+We write the code like this and we get a picture that looks like this.
+
+7
+00:00:28,510 --> 00:00:32,439
+We will later learn how this curve is formed, but note
+
+8
+00:00:32,439 --> 00:00:35,200
+the shaded area around the curve.
+
+9
+00:00:35,200 --> 00:00:39,760
+This shaded area is created using the concept of confidence intervals.
+
+10
+00:00:39,760 --> 00:00:42,730
+In our competition, we were asked to give an interval.
+
+11
+00:00:42,730 --> 00:00:46,570
+If the interval you submit includes the actual proportion p,
+
+12
+00:00:46,570 --> 00:00:48,580
+you get half the money you spent on your poll
+
+13
+00:00:48,580 --> 00:00:52,450
+back and pass to the next stage of the competition.
+
+14
+00:00:52,450 --> 00:00:55,360
+One way to pass to the second round of the competition
+
+15
+00:00:55,360 --> 00:01:00,850
+to report a very large interval-- for example, the interval 0 to 1.
+
+16
+00:01:00,850 --> 00:01:03,308
+This is guaranteed to include p.
+
+17
+00:01:03,308 --> 00:01:06,310
+However, with an interval this big, we have
+
+18
+00:01:06,310 --> 00:01:08,920
+no chance of winning the competition.
+
+19
+00:01:08,920 --> 00:01:11,560
+Similarly, if you are an election forecaster
+
+20
+00:01:11,560 --> 00:01:14,770
+and predict the spread will be between negative 100 and 100,
+
+21
+00:01:14,770 --> 00:01:17,560
+you&#39;ll be ridiculed for stating the obvious.
+
+22
+00:01:17,560 --> 00:01:20,260
+Even a smaller interval such as saying that the spread will
+
+23
+00:01:20,260 --> 00:01:25,180
+be between minus 10% and 10% will not be considered serious.
+
+24
+00:01:25,180 --> 00:01:26,980
+On the other hand, the smaller the interval
+
+25
+00:01:26,980 --> 00:01:31,810
+we report, the smaller our chance of passing to the second round.
+
+26
+00:01:31,810 --> 00:01:35,980
+Similarly, a bold pollster that reports very small intervals
+
+27
+00:01:35,980 --> 00:01:41,230
+and misses the mark most of the time will not be considered a good pollster.
+
+28
+00:01:41,230 --> 00:01:43,720
+We want to be somewhere in between.
+
+29
+00:01:43,720 --> 00:01:46,660
+Confidence intervals will help us get there.
+
+30
+00:01:46,660 --> 00:01:50,380
+We can use the statistical theory we have learned to compute,
+
+31
+00:01:50,380 --> 00:01:54,790
+for any given interval, the probability that it includes p.
+
+32
+00:01:54,790 --> 00:01:58,150
+Similarly if we are asked to create an interval with, say,
+
+33
+00:01:58,150 --> 00:02:03,290
+a 95% chance of including p, we can do that as well.
+
+34
+00:02:03,290 --> 00:02:07,570
+These are called 95% confidence intervals.
+
+35
+00:02:07,570 --> 00:02:11,440
+Note that when pollsters report an estimate and a margin of error,
+
+36
+00:02:11,440 --> 00:02:15,750
+they are, in a way, reporting a 95% confidence interval.
+
+37
+00:02:15,750 --> 00:02:18,880
+Let&#39;s show how this works mathematically.
+
+38
+00:02:18,880 --> 00:02:22,750
+We want to know the probability that the interval X-bar minus 2 times
+
+39
+00:02:22,750 --> 00:02:28,120
+the estimated standard error to X-bar plus 2 times
+
+40
+00:02:28,120 --> 00:02:33,820
+its estimated standard error contains the actual proportion p.
+
+41
+00:02:33,820 --> 00:02:39,490
+First, note that the start and end of this interval are random variables.
+
+42
+00:02:39,490 --> 00:02:43,720
+Every time that we take a sample, they change.
+
+43
+00:02:43,720 --> 00:02:47,410
+To illustrate this, we&#39;re going to run a Monte Carlo simulation.
+
+44
+00:02:47,410 --> 00:02:49,356
+We&#39;re going to do it just twice first.
+
+45
+00:02:49,356 --> 00:02:50,980
+So we&#39;re going to use these parameters.
+
+46
+00:02:50,980 --> 00:02:55,780
+We&#39;re going to make p 0.45 and N 1,000.
+
+47
+00:02:55,780 --> 00:02:59,470
+Note that the interval we get when we write this code
+
+48
+00:02:59,470 --> 00:03:04,300
+is different from what we get if we run that same code again.
+
+49
+00:03:04,300 --> 00:03:06,820
+If we keep sampling and creating intervals,
+
+50
+00:03:06,820 --> 00:03:10,780
+we will see that this is due to random variation.
+
+51
+00:03:10,780 --> 00:03:14,350
+To determine the probability that the interval includes p,
+
+52
+00:03:14,350 --> 00:03:17,230
+we need to compute this probability.
+
+53
+00:03:17,230 --> 00:03:19,690
+By subtracting and dividing the same quantities
+
+54
+00:03:19,690 --> 00:03:23,260
+in all parts of the equation, we get that the equation
+
+55
+00:03:23,260 --> 00:03:26,200
+is equivalent to this.
+
+56
+00:03:26,200 --> 00:03:30,100
+The term in the middle is an approximately normal random variable
+
+57
+00:03:30,100 --> 00:03:34,330
+with expected value 0 and standard error 1, which
+
+58
+00:03:34,330 --> 00:03:37,660
+we have been denoting with capital Z.
+
+59
+00:03:37,660 --> 00:03:40,180
+So what we have is, what is the probability
+
+60
+00:03:40,180 --> 00:03:44,860
+of a standard normal variable being between minus 2 and 2?
+
+61
+00:03:44,860 --> 00:03:48,560
+And this is, we know, about 95%.
+
+62
+00:03:48,560 --> 00:03:52,860
+So we have a 95% confidence interval.
+
+63
+00:03:52,860 --> 00:03:56,110
+Note that if we want to have a larger probability, say 99%,
+
+64
+00:03:56,110 --> 00:04:00,850
+a 99% confidence interval, we need to multiply by whatever
+
+65
+00:04:00,850 --> 00:04:04,730
+z satisfies the following equation.
+
+66
+00:04:04,730 --> 00:04:08,540
+Note that by using the quantity that we get by typing this code,
+
+67
+00:04:08,540 --> 00:04:16,240
+which is about 2.576, will do it, because by definition the pnorm of what
+
+68
+00:04:16,240 --> 00:04:23,420
+we get when we type qnorm(0.995) is by definition 0.995.
+
+69
+00:04:23,420 --> 00:04:32,020
+And by symmetry, pnorm of 1 minus qnorm(0.995) is 1 minus 0.995.
+
+70
+00:04:32,020 --> 00:04:37,540
+So now we compute pnorm minus pnorm minus z, we get 99%.
+
+71
+00:04:37,540 --> 00:04:39,770
+This is what we wanted.
+
+72
+00:04:39,770 --> 00:04:42,880
+We can use this approach for any percentile q.
+
+73
+00:04:42,880 --> 00:04:47,455
+We use 1 minus (1 minus q) divided by 2.
+
+74
+00:04:47,455 --> 00:04:51,850
+Why this number-- because of what we just saw, 1 minus (1 minus q)
+
+75
+00:04:51,850 --> 00:04:56,520
+divided by 2 plus (1 minus q) divided by 2 equals q.
+
+76
+00:04:56,520 --> 00:04:58,360
+And we get what we want.
+
+77
+00:04:58,360 --> 00:05:02,950
+Also note that to get exactly 0.95, we actually
+
+78
+00:05:02,950 --> 00:05:05,510
+use a slightly smaller number than 2.
+
+79
+00:05:05,510 --> 00:05:06,500
+How do we know?
+
+80
+00:05:06,500 --> 00:05:11,150
+We type qnorm of 0.975 and we see that the value
+
+81
+00:05:11,150 --> 00:05:17,080
+that we should be using to get exactly a 95% confidence interval is 1.96.
+

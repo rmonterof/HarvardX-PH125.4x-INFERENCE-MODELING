@@ -1,0 +1,200 @@
+0
+00:00:05,860 --> 00:00:07,780
+RAFAEL IRIZARRY: To demonstrate the usefulness
+
+1
+00:00:07,780 --> 00:00:11,840
+of hierarchical models, Bayesian models, in practice,
+
+2
+00:00:11,840 --> 00:00:14,870
+we&#39;re going to show you a baseball example.
+
+3
+00:00:14,870 --> 00:00:20,380
+In sports, we use Bayesian thinking all the time, even if we don&#39;t realize it.
+
+4
+00:00:20,380 --> 00:00:22,390
+Let&#39;s go to the example.
+
+5
+00:00:22,390 --> 00:00:25,360
+Jose Iglesias is a professional baseball player.
+
+6
+00:00:25,360 --> 00:00:30,810
+In April 2013, when he was starting his career, he was performing rather well.
+
+7
+00:00:30,810 --> 00:00:33,430
+He had been to bat 20 times and he had nine hits,
+
+8
+00:00:33,430 --> 00:00:37,290
+which is an average of 0.450.
+
+9
+00:00:37,290 --> 00:00:44,800
+This average of 0.450 means Jose had been successful 45% of the times he had
+
+10
+00:00:44,800 --> 00:00:48,740
+batted, which is rather high historically speaking.
+
+11
+00:00:48,740 --> 00:00:52,600
+Note, for example, that no one has finished a season with an average
+
+12
+00:00:52,600 --> 00:00:58,510
+of 0.400 or more since Ted Williams did it in 1941.
+
+13
+00:00:58,510 --> 00:01:00,950
+To illustrate the way hierarchical models are powerful,
+
+14
+00:01:00,950 --> 00:01:06,160
+we will try to predict Jose&#39;s batting average at the end of the season.
+
+15
+00:01:06,160 --> 00:01:11,050
+In a typical season, players have about 500 or bats.
+
+16
+00:01:11,050 --> 00:01:13,030
+With the techniques we have learned up to now,
+
+17
+00:01:13,030 --> 00:01:17,440
+referred to as frequentist statistics, the best we can do
+
+18
+00:01:17,440 --> 00:01:20,320
+is provide a confidence interval.
+
+19
+00:01:20,320 --> 00:01:25,310
+We can think of outcomes for hitting as a binomial with a success rate of p.
+
+20
+00:01:25,310 --> 00:01:32,560
+So if the success rate is indeed 0.450, the standard error of just 20 at bats
+
+21
+00:01:32,560 --> 00:01:33,910
+can be computed like this.
+
+22
+00:01:33,910 --> 00:01:36,010
+And it&#39;s 0.111.
+
+23
+00:01:36,010 --> 00:01:39,520
+We can use this to construct a 95% confidence interval, which
+
+24
+00:01:39,520 --> 00:01:45,850
+will be from 0.228 to 0.672.
+
+25
+00:01:45,850 --> 00:01:48,560
+This prediction has two problems.
+
+26
+00:01:48,560 --> 00:01:52,150
+First, it&#39;s very large, so it&#39;s not very useful.
+
+27
+00:01:52,150 --> 00:01:57,640
+Second, it&#39;s centered at 0.450, which implies that our best guess is that
+
+28
+00:01:57,640 --> 00:02:02,680
+this relatively unknown player will break Ted Williams&#39; longstanding
+
+29
+00:02:02,680 --> 00:02:04,600
+record.
+
+30
+00:02:04,600 --> 00:02:08,680
+If you follow baseball, this last statement will seem wrong.
+
+31
+00:02:08,680 --> 00:02:11,290
+And this is because you&#39;re implicitly using
+
+32
+00:02:11,290 --> 00:02:14,380
+the hierarchical model that factors in information
+
+33
+00:02:14,380 --> 00:02:17,350
+from years of following baseball.
+
+34
+00:02:17,350 --> 00:02:22,150
+Here we show how we can quantify this intuition.
+
+35
+00:02:22,150 --> 00:02:25,840
+First, let&#39;s explore the distribution of batting averages
+
+36
+00:02:25,840 --> 00:02:29,410
+for all players with more than 500 at bats
+
+37
+00:02:29,410 --> 00:02:34,690
+during the seasons 2010, 2011, and 2012.
+
+38
+00:02:34,690 --> 00:02:37,480
+Here are the histograms.
+
+39
+00:02:37,480 --> 00:02:42,064
+We note that the average player had an average of 0.275.
+
+40
+00:02:42,064 --> 00:02:46,150
+And the standard deviation of the population of all these players
+
+41
+00:02:46,150 --> 00:02:49,300
+was 0.027.
+
+42
+00:02:49,300 --> 00:02:54,070
+So we can see already that 0.450 would be quite an anomaly,
+
+43
+00:02:54,070 --> 00:02:58,640
+since it is over six standard deviations away from the average.
+
+44
+00:02:58,640 --> 00:03:04,480
+So is Jose lucky or the best batter seen in the last 50 years?
+
+45
+00:03:04,480 --> 00:03:06,670
+Perhaps it&#39;s a combination of both.
+
+46
+00:03:06,670 --> 00:03:11,980
+But how do we decide how much of this is luck and how much of this is talent?
+
+47
+00:03:11,980 --> 00:03:15,190
+If we become convinced that this is just luck,
+
+48
+00:03:15,190 --> 00:03:20,830
+we should trade him to a team that trusts the 0.450 observation and is
+
+49
+00:03:20,830 --> 00:03:24,840
+maybe overestimating his potential.
+
